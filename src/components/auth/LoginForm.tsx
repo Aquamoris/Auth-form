@@ -78,7 +78,7 @@ const LoginForm = () => {
                         Нет аккуаунта? <Link to='/register'>Зарегистрироваться</Link>
                     </div>
                     <div className={style.text}>
-                        <Link to='/register'>Восстановить пароль</Link>
+                        <Link to='/reset'>Восстановить пароль</Link>
                     </div>
                 </Form>
             )}
