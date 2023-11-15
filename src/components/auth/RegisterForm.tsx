@@ -15,9 +15,9 @@ interface MyFormValues {
 const LoginSchema = Yup.object().shape({
     username: Yup.string()
         .required(requiredError('имя пользователя')),
-    login: Yup.string()
+    email: Yup.string()
         .email('Введите кореектный email адрес')
-        .required(requiredError('логин')),
+        .required(requiredError('email')),
     password: Yup.string()
         .min(8, 'Слишком короткий пароль')
         .minLowercase(1, passwordValid('латинскую букву'))
@@ -26,6 +26,7 @@ const LoginSchema = Yup.object().shape({
         .minSymbols(1, passwordValid('символ'))
         .required(requiredError('пароль')),
     repPassword: Yup.string()
+        .required(requiredError('повтор пароля'))
         .oneOf([Yup.ref('password')], 'Пароли должны совпадать')
 })
 
