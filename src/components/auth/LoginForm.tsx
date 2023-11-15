@@ -3,7 +3,8 @@ import {Field, Form, Formik} from "formik";
 import * as Yup from 'yup';
 import YupPassword from "yup-password";
 import {Link} from "react-router-dom";
-import {passwordValid, requiredError} from "../utils/ValidateMessages";
+import {passwordValid, requiredError} from "../../utils/ValidateMessages";
+import style from './Form.module.scss';
 YupPassword(Yup);
 
 interface MyFormValues {
@@ -42,25 +43,27 @@ const LoginForm = () => {
             }}
         >
             {({ errors, touched }) => (
-                <Form>
+                <Form className={style.form}>
                     <label htmlFor="login">Email</label>
-                    <Field id="login" name="login" placeholder="Введите логин" />
+                    <Field className={style.inputField} id="login" name="login" placeholder="Введите логин" />
                     {errors.login && touched.login
-                        ? <div>{errors.login}</div>
+                        ? <div className={style.error}>{errors.login}</div>
                         : null}
 
                     <label htmlFor="password">Пароль</label>
-                    <Field id="password" name="password" placeholder="Введите пароль" type='password' />
+                    <Field className={style.inputField} id="password" name="password" placeholder="Введите пароль" type='password' />
                     {errors.password && touched.password
-                        ? <div>{errors.password}</div>
+                        ? <div className={style.error}>{errors.password}</div>
                         : null}
 
-                    <label htmlFor="rememberMe">Запомнить меня</label>
-                    <Field id="rememberMe" name="rememberMe" type='checkbox' />
+                    <div className={style.rememberMe}>
+                        <label htmlFor="rememberMe">Запомнить меня</label>
+                        <Field id="rememberMe" name="rememberMe" type='checkbox' />
+                    </div>
 
-                    <button type="submit">Продолжить</button>
+                    <button className={style.submitButton} type="submit">Продолжить</button>
 
-                    <div>
+                    <div className={style.text}>
                         Нет аккуаунта? <Link to='/register'>Зарегистрироваться</Link>
                     </div>
                 </Form>

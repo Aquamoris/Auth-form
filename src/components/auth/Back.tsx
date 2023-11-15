@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {Link} from "react-router-dom";
+import style from './Form.module.scss';
 
 interface Props {
     text: string
@@ -7,9 +8,11 @@ interface Props {
 
 const Back:FC<Props> = ({text}) => {
     return (
-        <Link to='/'>
-            ← {text}
-        </Link>
+        <div className={style.back}>
+            <Link to='/'>
+                ← {text}
+            </Link>
+        </div>
     );
 };
 

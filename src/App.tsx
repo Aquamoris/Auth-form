@@ -5,13 +5,14 @@ import Register from "./components/auth/Register";
 import Policy from "./components/policy/Policy";
 
 function App() {
-
     return (
-        <Routes>
-            <Route path='/' element={<Login />}/>
-            <Route path='/register' element={<Register/>}/>
-            <Route path='/policy' element={<Policy/>}/>
-        </Routes>
+        <div className='App'>
+            <Routes>
+                <Route path='/' element={<Login />}/>
+                <Route path='/register' element={<Register/>}/>
+                <Route path='/policy' element={<Policy/>}/>
+            </Routes>
+        </div>
     );
 }
 

@@ -1,4 +1,4 @@
-export const requiredError = (field: string) => {
+export const requiredError = (field: string): string => {
     return `Поле ${field} является обязательным к заполнению`
 }
 
