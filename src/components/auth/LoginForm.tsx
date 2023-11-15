@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Field, Form, Formik} from "formik";
 import * as Yup from 'yup';
 import YupPassword from "yup-password";
 import {Link} from "react-router-dom";
 import {passwordValid, requiredError} from "../../utils/ValidateMessages";
 import style from './Form.module.scss';
+import show from '../../assets/images/showPassword.png';
 YupPassword(Yup);
 
 interface MyFormValues {
     login: string,
     password: string,
-    rememberMe: boolean
+    rememberMe: boolean,
+    showPassword: boolean
 }
 
 const LoginSchema = Yup.object().shape({
@@ -27,10 +29,13 @@ const LoginSchema = Yup.object().shape({
 })
 
 const LoginForm = () => {
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+
     const initialValues: MyFormValues = {
         login: '',
         password: '',
-        rememberMe: false
+        rememberMe: false,
+        showPassword: false
     }
 
     return (
@@ -40,9 +45,10 @@ const LoginForm = () => {
             onSubmit={(values, actions) => {
                 alert(JSON.stringify(values, null, 2));
                 actions.setSubmitting(false);
+                actions.resetForm();
             }}
         >
-            {({ errors, touched }) => (
+            {({ errors, touched, values }) => (
                 <Form className={style.form}>
                     <label htmlFor="login">Email</label>
                     <Field className={style.inputField} id="login" name="login" placeholder="Введите логин" />
@@ -50,8 +56,13 @@ const LoginForm = () => {
                         ? <div className={style.error}>{errors.login}</div>
                         : null}
 
-                    <label htmlFor="password">Пароль</label>
-                    <Field className={style.inputField} id="password" name="password" placeholder="Введите пароль" type='password' />
+                    <div className={style.passwordSettings}>
+                        <label htmlFor="password">Пароль</label>
+                        <img src={show} onClick={() => setShowPassword(!showPassword)} alt={show}/>
+                    </div>
+                    <Field type={showPassword ? 'text' : 'password'}
+                        className={style.inputField} id="password" name="password" placeholder="Введите пароль"
+                    />
                     {errors.password && touched.password
                         ? <div className={style.error}>{errors.password}</div>
                         : null}
@@ -65,6 +76,9 @@ const LoginForm = () => {
 
                     <div className={style.text}>
                         Нет аккуаунта? <Link to='/register'>Зарегистрироваться</Link>
+                    </div>
+                    <div className={style.text}>
+                        <Link to='/register'>Восстановить пароль</Link>
                     </div>
                 </Form>
             )}
