@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {Field, Form, Formik} from "formik";
 import * as Yup from 'yup';
 import YupPassword from "yup-password";
-import {passwordValid, requiredError} from "../../utils/ValidateMessages";
 import style from './Form.module.scss';
 import show from '../../assets/images/showPassword.png';
+import {emailValid, passwordValid, repeatPassword, usernameValid} from "../../utils/ValidationFields";
 YupPassword(Yup);
 
 interface MyFormValues {
@@ -15,21 +15,10 @@ interface MyFormValues {
 }
 
 const LoginSchema = Yup.object().shape({
-    username: Yup.string()
-        .required(requiredError('имя пользователя')),
-    email: Yup.string()
-        .email('Введите кореектный email адрес')
-        .required(requiredError('email')),
-    password: Yup.string()
-        .min(8, 'Слишком короткий пароль')
-        .minLowercase(1, passwordValid('латинскую букву'))
-        .minUppercase(1, passwordValid('заглаваную латинскую букву'))
-        .minNumbers(1, passwordValid('цифру'))
-        .minSymbols(1, passwordValid('символ'))
-        .required(requiredError('пароль')),
-    repPassword: Yup.string()
-        .required(requiredError('повтор пароля'))
-        .oneOf([Yup.ref('password')], 'Пароли должны совпадать')
+    username: usernameValid,
+    email: emailValid,
+    password: passwordValid,
+    repPassword: repeatPassword
 })
 
 const LoginForm = () => {

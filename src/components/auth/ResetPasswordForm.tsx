@@ -2,16 +2,14 @@ import React from 'react';
 import {Field, Form, Formik} from "formik";
 import style from "./Form.module.scss";
 import * as Yup from "yup";
-import {requiredError} from "../../utils/ValidateMessages";
+import {emailValid} from "../../utils/ValidationFields";
 
 interface MyFormValues {
     email: string
 }
 
 const ResetSchema = Yup.object().shape({
-    email: Yup.string()
-        .email('Введите кореектный email адрес')
-        .required(requiredError('email')),
+    email: emailValid
 })
 
 const ResetPasswordForm = () => {
