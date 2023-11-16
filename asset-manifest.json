@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/auth-form/static/css/main.32d284d4.css",
-    "main.js": "/auth-form/static/js/main.d099ad20.js",
-    "static/media/showPassword.png": "/auth-form/static/media/showPassword.5dd8cb5c607214aa88df.png",
-    "index.html": "/auth-form/index.html",
-    "main.32d284d4.css.map": "/auth-form/static/css/main.32d284d4.css.map",
-    "main.d099ad20.js.map": "/auth-form/static/js/main.d099ad20.js.map"
+    "main.css": "/Auth-form/static/css/main.32d284d4.css",
+    "main.js": "/Auth-form/static/js/main.3f44b3a5.js",
+    "static/media/showPassword.png": "/Auth-form/static/media/showPassword.5dd8cb5c607214aa88df.png",
+    "index.html": "/Auth-form/index.html",
+    "main.32d284d4.css.map": "/Auth-form/static/css/main.32d284d4.css.map",
+    "main.3f44b3a5.js.map": "/Auth-form/static/js/main.3f44b3a5.js.map"
   },
   "entrypoints": [
     "static/css/main.32d284d4.css",
-    "static/js/main.d099ad20.js"
+    "static/js/main.3f44b3a5.js"
   ]
 }
