@@ -2,7 +2,7 @@ import React from 'react';
 import {Field, Form, Formik} from "formik";
 import style from "./Form.module.scss";
 import * as Yup from "yup";
-import {passwordValid, requiredError} from "../../utils/ValidateMessages";
+import {requiredError} from "../../utils/ValidateMessages";
 
 interface MyFormValues {
     email: string
